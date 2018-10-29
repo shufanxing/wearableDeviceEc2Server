@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author frg
+ * @author shufan
  */
 @Entity
 @Table(name = "step_count")
@@ -34,8 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "StepCount.findByStepCount", query = "SELECT s FROM StepCount s WHERE s.stepCount = :stepCount"),
     @NamedQuery(name = "StepCount.findCurrentDayByUserId", query = "SELECT MAX(s.day) FROM StepCount s WHERE s.userId = :userId"),
     @NamedQuery(name = "StepCount.findStepSumByUserIdDay", query = "SELECT SUM(s.stepCount) FROM StepCount s WHERE s.userId = :userId and s.day = :day"),
-    @NamedQuery(name = "StepCount.findRangeStepSumByUserId", query = "SELECT SUM(s.stepCount) FROM StepCount s WHERE s.userId = :userId and s.day >= :startDay and s.day < :endDay GROUP BY s.day")
-        
+    @NamedQuery(name = "StepCount.findRangeStepSumByUserId", query = "SELECT SUM(s.stepCount) FROM StepCount s WHERE s.userId = :userId and s.day >= :startDay and s.day < :endDay GROUP BY s.day"),
+    @NamedQuery(name = "StepCount.deleteAll", query = "DELETE FROM StepCount")        
 })
 public class StepCount implements Serializable {
 

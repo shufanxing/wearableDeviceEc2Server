@@ -6,7 +6,6 @@
 package entities.service;
 
 import entities.StepCount;
-import java.util.Arrays;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,10 +22,9 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author frg
+ * @author shufan
  */
 @Stateless
-//@Path("entities.stepcount")
 @Path("/")
 public class StepCountFacadeREST extends AbstractFacade<StepCount> {
 
@@ -37,6 +35,10 @@ public class StepCountFacadeREST extends AbstractFacade<StepCount> {
         super(StepCount.class);
     }
 
+    /*
+        Automaticlly genereated codes
+    */
+    
     @POST
     @Override
     @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -122,6 +124,14 @@ public class StepCountFacadeREST extends AbstractFacade<StepCount> {
     @Produces(MediaType.APPLICATION_JSON)
     public String getRange(@PathParam("userID") Integer userID, @PathParam("startDay") Integer startDay, @PathParam("numDays") Integer numDays) {
         return em.createNamedQuery("StepCount.findRangeStepSumByUserId").setParameter("userId", userID).setParameter("startDay", startDay).setParameter("endDay", startDay+numDays).getResultList().toString();
+    }
+    
+    //return: the number of deleted records    
+    @POST
+    @Path("deleteAll")
+    @Produces(MediaType.TEXT_PLAIN)
+    public int deleteAll() {
+        return em.createNamedQuery("StepCount.deleteAll").executeUpdate();
     }
 
 }
