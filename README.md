@@ -1,1 +1,0 @@
-# wearableDeviceEc2Server

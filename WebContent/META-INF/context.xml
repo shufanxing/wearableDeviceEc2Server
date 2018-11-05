@@ -1,0 +1,27 @@
+<Context>
+
+  <Resource name="jdbc/tutorialdb" 
+auth="Container"
+          type="javax.sql.DataSource"
+          factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
+          testWhileIdle="true"
+          testOnBorrow="true"
+          testOnReturn="false"
+          timeBetweenEvictionRunsMillis="30000"
+          maxActive="300"
+          minIdle="30"
+          maxWait="10000"
+          initialSize="30"
+          removeAbandonedTimeout="60"
+          removeAbandoned="true"
+          logAbandoned="true"
+          minEvictableIdleTimeMillis="30000"
+          jmxEnabled="true"
+          jdbcInterceptors="org.apache.tomcat.jdbc.pool.interceptor.ConnectionState;
+            org.apache.tomcat.jdbc.pool.interceptor.StatementFinalizer"
+
+        driverClassName="org.postgresql.Driver"
+        
+        username="root" password="12345678"
+                url="jdbc:postgresql://wdpostgredb.cm4pdwx2jgw0.us-west-2.rds.amazonaws.com:5432/root"/>
+</Context>
